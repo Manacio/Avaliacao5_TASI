@@ -15,7 +15,7 @@ pip install langchain
 pip install langchain_ollama
 pip install faiss-cpu
 ```
-### cObservação sobre FAISS:
+### Observação sobre FAISS:
 Se você tem uma GPU e deseja usar o FAISS com aceleração por GPU, use o seguinte comando em vez do faiss-cpu:
 
 ```bash
@@ -80,7 +80,7 @@ Após garantir que as dependências estão instaladas e o caminho do arquivo PDF
 O código irá carregar o PDF e dividi-lo em pedaços (chunks).
 Você verá a quantidade de chunks gerados, além de um exemplo do conteúdo de um dos primeiros chunks.
 Em seguida, o código criará um banco de dados FAISS com os embeddings dos textos.
-Passo 4: Realizar uma Consulta
+### Passo 4: Realizar uma Consulta
 Quando o código pedir para você fazer uma pergunta, digite uma consulta sobre o tema contido no PDF (por exemplo, sobre códigos maliciosos, conforme o código sugere). O modelo irá buscar os chunks mais relevantes e apresentar a resposta.
 
 Exemplo de Saída
