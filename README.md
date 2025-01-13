@@ -24,7 +24,7 @@ Descrição do Código
 1. Carregamento e Processamento de PDF
 O código começa carregando o arquivo PDF utilizando o PyPDFLoader da biblioteca LangChain. Em seguida, o conteúdo é dividido em "chunks", ou pedaços de texto, usando o RecursiveCharacterTextSplitter para facilitar a busca e a análise.
 
-python
+'''python
 Copiar código
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -40,15 +40,17 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 
 texts = text_splitter.split_documents(pages)
+'''
 2. Construção do Banco de Dados com Embeddings
 Após dividir o texto, o código gera embeddings usando o modelo OllamaEmbeddings e armazena essas representações em um banco de dados FAISS, que é uma estrutura eficiente para busca de similaridade.
 
-python
+````python
 Copiar código
 from langchain_ollama import OllamaEmbeddings
 from langchain.vectorstores import FAISS
 
 db = FAISS.from_documents(texts, OllamaEmbeddings(model="mxbai-embed-large"))
+```
 3. Consulta ao Banco de Dados
 O código permite realizar uma busca no banco de dados, retornando os documentos mais relevantes (chunks) baseados na similaridade com a consulta fornecida pelo usuário.
 
