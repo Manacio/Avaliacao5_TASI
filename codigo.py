@@ -27,7 +27,7 @@ print (f"Quantidade de chunks: {len(texts)} ") # imprimirar a quantidade de pagi
 from langchain_ollama import OllamaEmbeddings
 from langchain.vectorstores import FAISS
 
-db = FAISS.from_documents(texts,  OllamaEmbeddings(model="mxbai-embed-large")) # gerando um banco de dados com e embeddings do texto que anteriomente foi quebrado em thunks
+db = FAISS.from_documents(texts,  OllamaEmbeddings(model="mxbai-embed-large")) # gerando um banco de dados com embeddings do texto que anteriomente foi quebrado em thunks
 
 # query = "o que é malware? " 
 
@@ -39,11 +39,11 @@ db = FAISS.from_documents(texts,  OllamaEmbeddings(model="mxbai-embed-large")) #
 from langchain_ollama.llms import OllamaLLM
 from langchain.chains import RetrievalQA
 # Create the LLM model and retriever
-model = OllamaLLM(model="llama3.2:latest")
+model = OllamaLLM(model="llama3.2:latest") # modelo ultilizado
 
 # recuperando o retriever com 5 documentos
-retriever = db.as_retriever(search_kwargs={"k": 5})
-#retriever = db.as_retriever()
+#retriever = db.as_retriever(search_kwargs={"k": 5})
+retriever = db.as_retriever()
 
 # Create a RetrievalQA chain
 qa_chain = RetrievalQA.from_chain_type(llm=model, retriever=retriever, chain_type="stuff")  
