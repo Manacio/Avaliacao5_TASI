@@ -56,7 +56,7 @@ from langchain_ollama.llms import OllamaLLM
 from langchain.chains import RetrievalQA
 
 model = OllamaLLM(model="llama3.2:latest")
-retriever = db.as_retriever(search_kwargs={"k": 5})
+retriever = db.as_retriever()
 qa_chain = RetrievalQA.from_chain_type(llm=model, retriever=retriever, chain_type="stuff")
 
 query = input("\n**** Faça uma pergunta sobre códigos maliciosos: ")
